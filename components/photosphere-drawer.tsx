@@ -1,8 +1,9 @@
 "use client"
 
-import { Globe, Plus } from "lucide-react"
+import { Plus } from "lucide-react"
 import PhotosphereTile from "@/components/photosphere-tile"
 import type { Photosphere } from "@/components/studio-layout"
+import Image from "next/image"
 
 type PhotosphereDrawerProps = {
   photospheres: Photosphere[]
@@ -27,9 +28,14 @@ export default function PhotosphereDrawer({
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-sidebar-primary flex items-center justify-center">
-            <Globe className="w-6 h-6 text-sidebar-primary-foreground" />
+            <Image
+              src="/favicon.png"
+              alt="Photosphere Studio"
+              width={48}
+              height={48}
+            />
           </div>
-          <h1 className="text-xl font-semibold text-sidebar-foreground">Photosphere Studio</h1>
+          <h1 className="text-xl font-semibold text-sidebar-foreground">PSStudio</h1>
         </div>
       </div>
 

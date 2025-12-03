@@ -62,7 +62,7 @@ export default function LoginPage() {
               height={64}
             />
           </div>
-          <h1 className="text-3xl font-semibold text-foreground">Photosphere Studio</h1>
+          <h1 className="text-3xl font-semibold text-foreground">PSStudio</h1>
         </div>
 
         <Button

@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Photosphere Studio - Manage Your Google Street View Photospheres",
+  title: "PSStudio - Manage Your Google Street View Photospheres",
   description: "Professional photosphere management tool for Google Street View. Upload, edit, and manage your 360° photos with an intuitive interface.",
-  keywords: ["photosphere", "360 photos", "street view", "google maps", "panorama", "virtual tour", "360 photography"],
-  authors: [{ name: "Photosphere Studio" }],
-  creator: "Photosphere Studio",
-  publisher: "Photosphere Studio",
+  keywords: ["photosphere", "360 photos", "street view", "google maps", "panorama", "virtual tour", "360 photography", "psstudio"],
+  authors: [{ name: "PSStudio" }],
+  creator: "PSStudio",
+  publisher: "PSStudio",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
@@ -26,25 +26,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://photosphere.studio",
-    siteName: "Photosphere Studio",
-    title: "Photosphere Studio - Manage Your Google Street View Photospheres",
+    url: "https://photosphere.2xxn.dev",
+    siteName: "PSStudio",
+    title: "PSStudio - Manage Your Google Street View Photospheres",
     description: "Professional photosphere management tool for Google Street View. Upload, edit, and manage your 360° photos with an intuitive interface.",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "Photosphere Studio Preview",
+        alt: "PSStudio Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Photosphere Studio - Manage Your Google Street View Photospheres",
+    title: "PSStudio - Manage Your Google Street View Photospheres",
     description: "Professional photosphere management tool for Google Street View. Upload, edit, and manage your 360° photos with an intuitive interface.",
     images: ["/preview.png"],
-    creator: "@photospherestudio",
   },
   robots: {
     index: true,
