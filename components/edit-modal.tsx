@@ -54,7 +54,7 @@ export default function EditModal({ photosphere, onClose, onUpdate }: EditModalP
 
   return (
     <Dialog open={true} onOpenChange={onClose} modal={true}>
-      <DialogContent className="max-w-2xl z-50">
+      <DialogContent className="max-w-2xl z-50000">
         <DialogHeader>
           <DialogTitle>Edit Location</DialogTitle>
         </DialogHeader>

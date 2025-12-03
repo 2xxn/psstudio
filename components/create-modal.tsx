@@ -143,7 +143,7 @@ export default function CreateModal({ onClose, onCreate }: CreateModalProps) {
 
   return (
     <Dialog open={true} onOpenChange={onClose} modal={true}>
-      <DialogContent className="max-w-2xl z-50">
+      <DialogContent className="max-w-2xl z-50000">
         <DialogHeader>
           <DialogTitle>Create New Photosphere</DialogTitle>
         </DialogHeader>
