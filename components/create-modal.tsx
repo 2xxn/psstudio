@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import dynamic from "next/dynamic"
 import { uploadPhoto, type PhotoMetadata } from "@/lib/api"
 import type { Photosphere } from "@/components/studio-layout"
+import toast from "react-hot-toast"
 
 const MapEditor = dynamic(() => import("@/components/map-editor"), {
   ssr: false,
@@ -124,12 +125,12 @@ export default function CreateModal({ onClose, onCreate }: CreateModalProps) {
       }
 
       onCreate(newPhotosphere)
-      alert(
+      toast.success(
         "Photo uploaded successfully! It may take a few minutes to a few hours to appear in your Google Maps profile.",
       )
     } catch (error) {
       console.error("Failed to upload photo:", error)
-      alert("Failed to upload photo. Please try again.")
+      toast.error("Failed to upload photo. Please try again.")
     } finally {
       setIsUploading(false)
     }

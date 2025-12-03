@@ -5,6 +5,7 @@ import { Globe } from "lucide-react"
 import { getAuthURL } from "@/lib/api"
 import { useState } from "react"
 import Image from "next/image"
+import toast from "react-hot-toast"
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +29,7 @@ export default function LoginPage() {
         } else if (event.data === "auth_error") {
           popup?.close()
           window.removeEventListener("message", messageHandler)
-          alert("Authentication failed. Please try again.")
+          toast.error("Authentication failed. Please try again.")
           setIsLoading(false)
         }
       }
@@ -45,7 +46,7 @@ export default function LoginPage() {
       }, 500)
     } catch (error) {
       console.error("Auth error:", error)
-      alert("Failed to initiate login. Please try again.")
+      toast.error("Failed to initiate login. Please try again.")
       setIsLoading(false)
     }
   }
