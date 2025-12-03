@@ -6,6 +6,7 @@ import { getAuthURL } from "@/lib/api"
 import { useState } from "react"
 import Image from "next/image"
 import toast from "react-hot-toast"
+import Link from "next/link"
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -52,8 +53,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="flex flex-col items-center gap-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background relative">
+      <div className="flex flex-col items-center gap-8 flex-1 justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
             <Image
@@ -93,6 +94,16 @@ export default function LoginPage() {
           {isLoading ? "Connecting..." : "Login with Google"}
         </Button>
       </div>
+
+      <footer className="w-full py-6 text-center text-sm text-muted-foreground">
+        <div className="flex gap-4 justify-center mb-2">
+          <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
+          <Link href="/terms" className="hover:underline">Terms of Service</Link>
+        </div>
+        <div>
+          &copy; {new Date().getFullYear()} PSStudio. All rights reserved.
+        </div>
+      </footer>
     </div>
   )
 }
