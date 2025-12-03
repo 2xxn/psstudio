@@ -30,7 +30,7 @@ function photoToPhotosphere(photo: Photo): Photosphere {
     latitude: photo.pose.latLngPair.latitude,
     longitude: photo.pose.latLngPair.longitude,
     captureDate: photo.captureTime,
-    uploadDate: photo.uploadDate || photo.captureTime,
+    uploadDate: photo.uploadTime,
     downloadUrl: photo.downloadUrl,
   }
 }

@@ -21,7 +21,7 @@ export type Photo = {
       longitude: number
     }
   }
-  uploadDate?: string
+  uploadTime: string
   mapsPublishStatus: string
   downloadUrl?: string
 }
