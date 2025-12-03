@@ -20,9 +20,10 @@ export type Photosphere = {
 }
 
 function photoToPhotosphere(photo: Photo): Photosphere {
+  const idLength = photo.photoId.id.length;
   return {
     id: photo.photoId.id,
-    name: `Photo ${photo.photoId.id.slice(0, 8)}`,
+    name: `Photo ${photo.photoId.id.slice(idLength - 8, idLength)}`,
     thumbnailUrl: photo.thumbnailUrl,
     shareLink: photo.shareLink,
     latitude: photo.pose.latLngPair.latitude,
