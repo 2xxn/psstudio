@@ -18,13 +18,12 @@ type PhotosphereTileProps = {
 export default function PhotosphereTile({ photosphere, onView, onEdit, onRemove, isSelected }: PhotosphereTileProps) {
   const [isHovered, setIsHovered] = useState(false)
 
-  const thumbnailUrl = getThumbnailURL(photosphere.thumbnailUrl)
+  const thumbnailUrl = photosphere.thumbnailUrl // getThumbnailURL(photosphere.thumbnailUrl)
 
   return (
     <div
-      className={`relative w-full aspect-[2/1] rounded-lg overflow-hidden group cursor-pointer transition-all ${
-        isSelected ? "ring-2 ring-sidebar-primary" : ""
-      }`}
+      className={`relative w-full aspect-[2/1] rounded-lg overflow-hidden group cursor-pointer transition-all ${isSelected ? "ring-2 ring-sidebar-primary" : ""
+        }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onView(photosphere)}
@@ -33,9 +32,8 @@ export default function PhotosphereTile({ photosphere, onView, onEdit, onRemove,
 
       {/* Overlay */}
       <div
-        className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity ${
-          isHovered ? "opacity-100" : "opacity-0"
-        }`}
+        className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity ${isHovered ? "opacity-100" : "opacity-0"
+          }`}
       >
         <div className="absolute inset-0 flex items-center justify-center gap-2">
           <Button
