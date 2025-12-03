@@ -23,7 +23,7 @@ export default function PhotosphereDrawer({
   selectedId,
 }: PhotosphereDrawerProps) {
   return (
-    <div className="w-52 bg-sidebar border-r border-sidebar-border flex flex-col">
+    <div className="w-72 bg-sidebar border-r border-sidebar-border flex flex-col">
       {/* Logo */}
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center gap-3">

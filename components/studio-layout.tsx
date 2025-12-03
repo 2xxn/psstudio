@@ -112,6 +112,11 @@ export default function StudioLayout() {
     }
   }
 
+  const handleShare = (photosphere: Photosphere) => {
+    navigator.clipboard.writeText(photosphere.shareLink)
+    alert("Share link copied to clipboard")
+  }
+
   if (isLoading) {
     return (
       <div className="h-screen flex items-center justify-center bg-background">
@@ -142,6 +147,7 @@ export default function StudioLayout() {
             photosphere={selectedPhotosphere}
             onDelete={handleDelete}
             onUpdate={() => handleEdit(selectedPhotosphere)}
+            onShare={() => handleShare(selectedPhotosphere)}
           />
         )}
       </div>

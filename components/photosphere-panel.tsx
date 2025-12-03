@@ -1,16 +1,17 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Trash2, RefreshCw, Calendar, Upload } from "lucide-react"
+import { Trash2, RefreshCw, Calendar, Upload, Share2 } from "lucide-react"
 import type { Photosphere } from "@/components/studio-layout"
 
 type PhotospherePanelProps = {
   photosphere: Photosphere
   onDelete: () => void
   onUpdate: () => void
+  onShare: () => void
 }
 
-export default function PhotospherePanel({ photosphere, onDelete, onUpdate }: PhotospherePanelProps) {
+export default function PhotospherePanel({ photosphere, onDelete, onUpdate, onShare }: PhotospherePanelProps) {
   return (
     <div className="w-72 bg-card border-l border-border p-6 overflow-y-auto">
       <div className="space-y-6">
@@ -18,11 +19,15 @@ export default function PhotospherePanel({ photosphere, onDelete, onUpdate }: Ph
         <div className="space-y-3">
           <h3 className="text-sm font-semibold text-foreground">Actions</h3>
           <div className="space-y-2">
-            <Button onClick={onUpdate} variant="secondary" className="w-full justify-start">
+            <Button onClick={onShare} variant="secondary" className="w-full justify-start hover:bg-secondary/40 transition-colors hover:text-secondary-foreground hover:cursor-pointer">
+              <Share2 className="w-4 h-4 mr-2" />
+              Share
+            </Button>
+            <Button onClick={onUpdate} variant="secondary" className="w-full justify-start hover:bg-secondary/40 transition-colors hover:text-secondary-foreground hover:cursor-pointer">
               <RefreshCw className="w-4 h-4 mr-2" />
               Update
             </Button>
-            <Button onClick={onDelete} variant="destructive" className="w-full justify-start">
+            <Button onClick={onDelete} variant="destructive" className="w-full justify-start hover:bg-destructive/40 transition-colors hover:text-destructive-foreground hover:cursor-pointer">
               <Trash2 className="w-4 h-4 mr-2" />
               Delete
             </Button>
