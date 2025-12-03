@@ -51,3 +51,26 @@ export async function PUT(
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
+
+export async function GET(
+    request: NextRequest,
+    { params }: { params: Promise<{ photoId: string }> }
+) {
+    const auth = await getAuthFromCookies();
+    const { photoId } = await params;
+
+    if (!auth?.accessToken) {
+        console.warn("Unauthorized GET attempt");
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const api = new StreetViewAPI(auth.accessToken);
+    try {
+        const photo = await api.getPhoto(photoId);
+        console.log(`Photo ${photoId} retrieved successfully`);
+        return NextResponse.json(photo, { status: 200 });
+    } catch (error) {
+        console.error(`Error retrieving photo ${photoId}:`, error);
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    }
+}

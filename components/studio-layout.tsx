@@ -17,6 +17,7 @@ export type Photosphere = {
   longitude: number
   captureDate: string
   uploadDate: string
+  downloadUrl?: string
 }
 
 function photoToPhotosphere(photo: Photo): Photosphere {
@@ -30,6 +31,7 @@ function photoToPhotosphere(photo: Photo): Photosphere {
     longitude: photo.pose.latLngPair.longitude,
     captureDate: photo.captureTime,
     uploadDate: photo.uploadDate || photo.captureTime,
+    downloadUrl: photo.downloadUrl,
   }
 }
 
@@ -67,7 +69,12 @@ export default function StudioLayout() {
   }
 
   const handleView = (photosphere: Photosphere) => {
-    setSelectedPhotosphere(photosphere)
+    fetch(`/api/${photosphere.id}`).then(res => res.json()).then(data => {
+      setSelectedPhotosphere(photoToPhotosphere(data))
+    }).catch(error => {
+      console.error("Failed to load photo:", error)
+      alert("Failed to load photo. Please try again.")
+    })
   }
 
   const handleEdit = (photosphere: Photosphere) => {

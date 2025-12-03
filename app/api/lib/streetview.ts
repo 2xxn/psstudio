@@ -66,7 +66,7 @@ export class StreetViewAPI {
     }
 
     async getPhoto(photoId: string): Promise<Photo> {
-        const response = await fetch(`${BASE_URL}/${photoId}`, {
+        const response = await fetch(`${BASE_URL}/${photoId}?view=INCLUDE_DOWNLOAD_URL`, {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + this.accessToken }
         });

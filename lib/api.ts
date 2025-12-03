@@ -23,6 +23,7 @@ export type Photo = {
   }
   uploadDate?: string
   mapsPublishStatus: string
+  downloadUrl?: string
 }
 
 // Get the base URL for API calls
