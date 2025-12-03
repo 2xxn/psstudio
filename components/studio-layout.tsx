@@ -7,6 +7,8 @@ import PhotospherePanel from "@/components/photosphere-panel"
 import EditModal from "@/components/edit-modal"
 import CreateModal from "@/components/create-modal"
 import { listPhotos, deletePhoto, type Photo } from "@/lib/api"
+import toast from "react-hot-toast"
+import { Button } from "@/components/ui/button"
 
 export type Photosphere = {
   id: string
@@ -62,7 +64,7 @@ export default function StudioLayout() {
         return
       }
 
-      alert("Failed to load photos. Please refresh the page.")
+      toast.error("Failed to load photos. Please refresh the page.")
     } finally {
       setIsLoading(false)
     }
@@ -76,21 +78,45 @@ export default function StudioLayout() {
     setEditingPhotosphere(photosphere)
   }
 
-  const handleRemove = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this photosphere?")) {
-      return
-    }
-
+  const executeDelete = async (id: string) => {
     try {
       await deletePhoto(id)
       setPhotospheres(photospheres.filter((p) => p.id !== id))
       if (selectedPhotosphere?.id === id) {
         setSelectedPhotosphere(null)
       }
+      toast.success("Photo deleted successfully")
     } catch (error) {
       console.error("Failed to delete photo:", error)
-      alert("Failed to delete photo. Please try again.")
+      toast.error("Failed to delete photo. Please try again.")
     }
+  }
+
+  const handleRemove = (id: string) => {
+    toast((t) => (
+      <div className="flex flex-col gap-2">
+        <p className="text-sm font-medium">Are you sure you want to delete this photosphere?</p>
+        <div className="flex gap-2 justify-end">
+          <Button 
+            variant="destructive" 
+            size="sm"
+            onClick={() => {
+              toast.dismiss(t.id);
+              executeDelete(id);
+            }}
+          >
+            Delete
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancel
+          </Button>
+        </div>
+      </div>
+    ), { duration: 5000 });
   }
 
   const handleUpdatePhotosphere = async (id: string, latitude: number, longitude: number) => {
@@ -114,7 +140,7 @@ export default function StudioLayout() {
 
   const handleShare = (photosphere: Photosphere) => {
     navigator.clipboard.writeText(photosphere.shareLink)
-    alert("Share link copied to clipboard")
+    toast.success("Share link copied to clipboard")
   }
 
   if (isLoading) {
