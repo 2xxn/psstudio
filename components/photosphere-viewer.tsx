@@ -30,9 +30,9 @@ export default function PhotosphereViewer({ photosphere }: PhotosphereViewerProp
       {/* Panorama Viewer */}
       <div className="flex-1 min-h-[400px] bg-card rounded-xl shadow-sm border border-border overflow-hidden">
         <ReactPhotoSphereViewer
-          src={photosphere.downloadUrl || photosphere.thumbnailUrl}
-          height={"100vh"}
-          width={"100vw"}
+          src={`/api/${photosphere.id}`}
+          height={"100%"}
+          width={"100%"}
           defaultZoomLvl={0}
         ></ReactPhotoSphereViewer>
       </div>

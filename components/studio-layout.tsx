@@ -69,12 +69,7 @@ export default function StudioLayout() {
   }
 
   const handleView = (photosphere: Photosphere) => {
-    fetch(`/api/${photosphere.id}`).then(res => res.json()).then(data => {
-      setSelectedPhotosphere(photoToPhotosphere(data))
-    }).catch(error => {
-      console.error("Failed to load photo:", error)
-      alert("Failed to load photo. Please try again.")
-    })
+    setSelectedPhotosphere(photosphere)
   }
 
   const handleEdit = (photosphere: Photosphere) => {

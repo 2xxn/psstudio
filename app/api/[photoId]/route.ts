@@ -68,7 +68,17 @@ export async function GET(
     try {
         const photo = await api.getPhoto(photoId);
         console.log(`Photo ${photoId} retrieved successfully`);
-        return NextResponse.json(photo, { status: 200 });
+
+        photo.downloadUrl = photo.downloadUrl || photo.thumbnailUrl;
+        const response = await fetch(photo.downloadUrl)
+
+        return new NextResponse(response.body, {
+            headers: {
+                "Content-Type": "image/jpeg",
+                // To allow client caching (optional)
+                "Cache-Control": "public, max-age=31536000, immutable",
+            },
+        });
     } catch (error) {
         console.error(`Error retrieving photo ${photoId}:`, error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

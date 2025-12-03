@@ -13,6 +13,7 @@ export interface Photo {
     uploadTime: string
     connections?: Connection[]
     places?: Place[]
+    downloadUrl?: string
 }
 
 export interface PhotoId {
