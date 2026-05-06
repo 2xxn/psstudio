@@ -128,6 +128,7 @@ export default function LandingPage() {
               width={900}
               height={560}
               className="w-full h-auto"
+              unoptimized
               priority
             />
           </div>
@@ -138,6 +139,7 @@ export default function LandingPage() {
               width={900}
               height={560}
               className="w-full h-auto"
+              unoptimized
             />
           </div>
         </div>
