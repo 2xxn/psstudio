@@ -1,0 +1,38 @@
+# PSStudio
+
+> PSStudio is an open-source web application for managing Google Street View photospheres. It lets users upload, geo-tag, and publish equirectangular 360° photos directly to Google Maps via the Street View Publish API.
+
+## What it does
+
+- Upload equirectangular 360° images to Google Street View
+- Place photospheres on an interactive map with exact GPS coordinates
+- Set capture dates for accurate Street View timeline display
+- View, edit location, and delete published photospheres
+- Browse all published photos in a thumbnail gallery with an integrated 360° viewer
+
+## Who it is for
+
+Photographers, surveyors, businesses, and hobbyists who want to publish immersive Street View content to Google Maps without interacting with the API directly.
+
+## Tech stack
+
+- Framework: Next.js (App Router) with TypeScript
+- Styling: Tailwind CSS with shadcn/ui components
+- Maps: Leaflet / React Leaflet
+- Authentication: Google OAuth 2.0
+- API: Google Street View Publish API
+
+## Pages
+
+- https://photosphere.2xxn.dev/ — Landing page and login
+- https://photosphere.2xxn.dev/studio — Main application (requires Google login)
+- https://photosphere.2xxn.dev/privacy — Privacy Policy
+- https://photosphere.2xxn.dev/terms — Terms of Service
+
+## Source code
+
+https://github.com/2xxn/psstudio
+
+## License
+
+MIT
