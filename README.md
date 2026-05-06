@@ -2,10 +2,10 @@
 
 **PSStudio** is a professional management tool for Google Street View Photospheres. It provides a streamlined interface for uploading, editing, and managing your 360° photos on Google Maps.
 
-![PSStudio Preview](assets/preview.png)
+![PSStudio Preview](public/preview.png)
 *Dashboard View*
 
-![PSStudio Editor](assets/preview2.png)
+![PSStudio Editor](public/preview2.png)
 *Upload PhotoSphere View*
 
 ## Features

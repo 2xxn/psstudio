@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://photosphere.sowinski.tech",
+    url: "https://photosphere.2xxn.dev",
     siteName: "PSStudio",
     title: "PSStudio - Manage Your Google Street View Photospheres",
     description: "Professional photosphere management tool for Google Street View. Upload, edit, and manage your 360° photos with an intuitive interface.",
@@ -36,7 +36,13 @@ export const metadata: Metadata = {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "PSStudio Preview",
+        alt: "PSStudio - Professional Photosphere Management",
+      },
+      {
+        url: "/preview2.png",
+        width: 1200,
+        height: 630,
+        alt: "PSStudio - Intuitive Street View Editing",
       },
     ],
   },
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PSStudio - Manage Your Google Street View Photospheres",
     description: "Professional photosphere management tool for Google Street View. Upload, edit, and manage your 360° photos with an intuitive interface.",
-    images: ["/preview.png"],
+    images: ["/preview.png", "/preview2.png"],
   },
   robots: {
     index: true,
