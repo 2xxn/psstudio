@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import type { Photosphere } from "@/components/studio-layout"
 import dynamic from "next/dynamic"
 import { updatePhoto } from "@/lib/api"
+import { trackEvent } from "@/lib/analytics"
 import toast from "react-hot-toast"
 
 const MapEditor = dynamic(() => import("@/components/map-editor"), {
@@ -38,6 +39,7 @@ export default function EditModal({ photosphere, onClose, onUpdate }: EditModalP
         captureTime: photosphere.captureDate, // Keep existing capture time
       })
       onUpdate(photosphere.id, latitude, longitude)
+      trackEvent("photosphere_updated")
       toast.success("Location updated successfully! Changes may take a few minutes to appear on Google Maps.")
     } catch (error) {
       console.error("Failed to update photo:", error)

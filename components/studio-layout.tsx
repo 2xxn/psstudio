@@ -7,6 +7,7 @@ import PhotospherePanel from "@/components/photosphere-panel"
 import EditModal from "@/components/edit-modal"
 import CreateModal from "@/components/create-modal"
 import { listPhotos, deletePhoto, type Photo } from "@/lib/api"
+import { trackEvent } from "@/lib/analytics"
 import toast from "react-hot-toast"
 import { Button } from "@/components/ui/button"
 
@@ -54,6 +55,7 @@ export default function StudioLayout() {
       const photos = await listPhotos()
       const converted = photos.map(photoToPhotosphere)
       setPhotospheres(converted)
+      trackEvent("studio_opened", { photos: converted.length })
     } catch (error: any) {
       console.error("Failed to load photos:", error)
 
@@ -85,6 +87,7 @@ export default function StudioLayout() {
       if (selectedPhotosphere?.id === id) {
         setSelectedPhotosphere(null)
       }
+      trackEvent("photosphere_deleted")
       toast.success("Photo deleted successfully")
     } catch (error) {
       console.error("Failed to delete photo:", error)
@@ -140,6 +143,7 @@ export default function StudioLayout() {
 
   const handleShare = (photosphere: Photosphere) => {
     navigator.clipboard.writeText(photosphere.shareLink)
+    trackEvent("share_link_copied")
     toast.success("Share link copied to clipboard")
   }
 

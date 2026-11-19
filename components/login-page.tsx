@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Globe } from "lucide-react"
 import { getAuthURL } from "@/lib/api"
+import { trackEvent } from "@/lib/analytics"
 import { useState } from "react"
 import Image from "next/image"
 import toast from "react-hot-toast"
@@ -13,7 +14,7 @@ export default function LoginPage() {
 
   const handleGoogleLogin = async () => {
     setIsLoading(true)
-
+    trackEvent("login_started")
     try {
       const authUrl = await getAuthURL()
 
@@ -23,11 +24,13 @@ export default function LoginPage() {
       // Listen for auth success or error messages
       const messageHandler = (event: MessageEvent) => {
         if (event.data === "auth_success") {
+          trackEvent("login_success")
           popup?.close()
           window.removeEventListener("message", messageHandler)
           // Redirect to studio
           window.location.href = "/studio"
         } else if (event.data === "auth_error") {
+          trackEvent("login_failed")
           popup?.close()
           window.removeEventListener("message", messageHandler)
           toast.error("Authentication failed. Please try again.")
@@ -46,6 +49,7 @@ export default function LoginPage() {
         }
       }, 500)
     } catch (error) {
+      trackEvent("login_failed")
       console.error("Auth error:", error)
       toast.error("Failed to initiate login. Please try again.")
       setIsLoading(false)

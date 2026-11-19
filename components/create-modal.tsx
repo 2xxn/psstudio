@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
 import dynamic from "next/dynamic"
 import { uploadPhoto, type PhotoMetadata } from "@/lib/api"
+import { trackEvent } from "@/lib/analytics"
 import type { Photosphere } from "@/components/studio-layout"
 import toast from "react-hot-toast"
 
@@ -125,6 +126,7 @@ export default function CreateModal({ onClose, onCreate }: CreateModalProps) {
       }
 
       onCreate(newPhotosphere)
+      trackEvent("photosphere_created")
       toast.success(
         "Photo uploaded successfully! It may take a few minutes to a few hours to appear in your Google Maps profile.",
       )

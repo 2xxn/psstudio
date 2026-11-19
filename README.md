@@ -87,6 +87,20 @@ npm run build
 npm start
 ```
 
+## Analytics
+
+The hosted instance uses [Umami Cloud](https://umami.is) to collect anonymous page views and product events: logins, photosphere uploads, edits, deletes, and share-link copies. Umami is cookieless and receives no Google account data, photo content, photo locations, or OAuth tokens.
+
+The tracker is restricted to `photosphere.2xxn.dev` via `data-domains`, so self-hosted forks do not send analytics. To use your own Umami instance:
+
+```env
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=your_website_id
+NEXT_PUBLIC_UMAMI_SRC=https://your-umami.example.com/script.js
+NEXT_PUBLIC_UMAMI_DOMAINS=your-domain.example.com
+```
+
+To disable analytics entirely, set `NEXT_PUBLIC_UMAMI_WEBSITE_ID=""` or remove the `<Script>` block in `app/layout.tsx`. These are build-time variables.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

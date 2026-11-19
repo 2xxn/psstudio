@@ -24,11 +24,17 @@ export default function PrivacyPolicy() {
 
       <section className="mb-6">
         <h2 className="text-2xl font-semibold mb-3">3. Third-Party Services</h2>
-        <p>Our service relies on Google Street View services. By using PSStudio, you are also interacting with Google's services. We recommend reviewing Google's Privacy Policy to understand how they handle your data.</p>
+        <p>Our service relies on Google Street View services. By using PSStudio, you are also interacting with Google's services. We recommend reviewing Google's Privacy Policy to understand how they handle your data. We also use Umami Cloud for anonymous usage analytics, described in section 4.</p>
       </section>
-      
+
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-3">4. Google User Data</h2>
+        <h2 className="text-2xl font-semibold mb-3">4. Analytics</h2>
+        <p>We use Umami Cloud, a privacy-focused analytics service, to understand how PSStudio is used. Umami does not use cookies, does not collect personally identifiable information, and does not track you across websites.</p>
+        <p className="mt-2">We only record aggregate page views and anonymous product events, such as a login starting, a photosphere being created, updated or deleted, or a share link being copied. We do not send Google account information, photo content, photo locations, or OAuth tokens to analytics. Blocking the analytics script does not affect the service.</p>
+      </section>
+
+      <section className="mb-6">
+        <h2 className="text-2xl font-semibold mb-3">5. Google User Data</h2>
         <p>Our application uses Google OAuth to authenticate users and access Google Street View Publish API. We access your Google Photos and Street View data only to provide the core functionality of managing your photospheres.</p>
         <p className="mt-2">We do not share your Google user data with any third parties, except as required by law.</p>
       </section>
