@@ -35,7 +35,7 @@
 
 ### Prerequisites
 
--   Node.js (v20 or higher)
+-   Node.js 22.23.5+, 24.22.3+, or 26.13.1+ (Node 20 is EOL)
 -   npm
 -   A Google Cloud Platform project with the **Street View Publish API** enabled.
 
