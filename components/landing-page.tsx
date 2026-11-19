@@ -38,7 +38,7 @@ const steps = [
   {
     n: "1",
     title: "Sign in with Google",
-    desc: "Grant PSStudio access to your Google Street View account via secure OAuth 2.0. No passwords are stored — only the tokens needed to publish on your behalf.",
+    desc: "Grant PSStudio access to your Google Street View account via secure OAuth 2.0. No passwords are stored - only the tokens needed to publish on your behalf.",
   },
   {
     n: "2",
@@ -99,7 +99,7 @@ export default function LandingPage() {
           <Image src="/favicon.png" alt="PSStudio logo" width={64} height={64} priority />
           <h1 id="hero-heading" className="text-3xl font-semibold text-foreground">PSStudio</h1>
           <p className="text-muted-foreground text-sm text-center max-w-lg">
-            Upload, geo-tag, and publish 360° equirectangular photospheres to Google Street View. Manage your entire library — view, edit location, and delete photos — without touching the API.
+            Upload, geo-tag, and publish 360° equirectangular photospheres to Google Street View. Manage your entire library - view, edit location, and delete photos - without touching the API.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function LandingPage() {
           <div className="rounded-xl overflow-hidden border border-border shadow-sm">
             <Image
               src="/preview.png"
-              alt="PSStudio dashboard — photosphere gallery and 360° viewer"
+              alt="PSStudio dashboard - photosphere gallery and 360° viewer"
               width={900}
               height={560}
               className="w-full h-auto"
@@ -135,7 +135,7 @@ export default function LandingPage() {
           <div className="rounded-xl overflow-hidden border border-border shadow-sm">
             <Image
               src="/preview2.png"
-              alt="PSStudio — create photosphere with interactive map placement"
+              alt="PSStudio - create photosphere with interactive map placement"
               width={900}
               height={560}
               className="w-full h-auto"
@@ -150,10 +150,10 @@ export default function LandingPage() {
         {/* ── WHAT IS PSSTUDIO ── */}
         <section aria-labelledby="about-heading">
           <h2 id="about-heading" className="text-xl font-semibold text-foreground mb-3">
-            What is PSStudio? — A Google Street View Photosphere Manager
+            What is PSStudio? - A Google Street View Photosphere Manager
           </h2>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
-            PSStudio is an open-source web application that lets you publish, manage, and delete 360° photospheres on Google Street View — without touching the API directly. It wraps the <strong className="text-foreground font-medium">Google Street View Publish API</strong> in a clean interface so photographers, surveyors, and hobbyists can focus on capturing the world rather than fighting OAuth flows and JSON payloads.
+            PSStudio is an open-source web application that lets you publish, manage, and delete 360° photospheres on Google Street View - without touching the API directly. It wraps the <strong className="text-foreground font-medium">Google Street View Publish API</strong> in a clean interface so photographers, surveyors, and hobbyists can focus on capturing the world rather than fighting OAuth flows and JSON payloads.
           </p>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl mt-3">
             Once a photo is published, it appears on <strong className="text-foreground font-medium">Google Maps</strong> and is accessible to anyone via Street View. PSStudio keeps a live list of all your published photospheres so you can view, update, or remove them at any time.
@@ -162,7 +162,7 @@ export default function LandingPage() {
 
         {/* ── FEATURES ── */}
         <section aria-labelledby="features-heading">
-          <h2 id="features-heading" className="text-xl font-semibold text-foreground mb-6">Features — Everything You Need to Publish Photospheres</h2>
+          <h2 id="features-heading" className="text-xl font-semibold text-foreground mb-6">Features - Everything You Need to Publish Photospheres</h2>
           <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f) => (
               <div
@@ -202,19 +202,19 @@ export default function LandingPage() {
           <ul className="space-y-2 text-sm text-muted-foreground max-w-2xl">
             <li className="flex gap-2">
               <span className="text-foreground font-medium shrink-0">Photographers</span>
-              — publish virtual tours of locations, businesses, or landmarks directly to Google Maps.
+              - publish virtual tours of locations, businesses, or landmarks directly to Google Maps.
             </li>
             <li className="flex gap-2">
               <span className="text-foreground font-medium shrink-0">Surveyors & mappers</span>
-              — document areas with geo-tagged 360° imagery for accurate, timestamped records.
+              - document areas with geo-tagged 360° imagery for accurate, timestamped records.
             </li>
             <li className="flex gap-2">
               <span className="text-foreground font-medium shrink-0">Businesses</span>
-              — add indoor or outdoor photospheres to their Google Maps listing to attract visitors.
+              - add indoor or outdoor photospheres to their Google Maps listing to attract visitors.
             </li>
             <li className="flex gap-2">
               <span className="text-foreground font-medium shrink-0">Hobbyists</span>
-              — share interesting places, trails, or events as immersive Street View experiences.
+              - share interesting places, trails, or events as immersive Street View experiences.
             </li>
           </ul>
         </section>

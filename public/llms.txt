@@ -24,10 +24,10 @@ Photographers, surveyors, businesses, and hobbyists who want to publish immersiv
 
 ## Pages
 
-- https://photosphere.2xxn.dev/ — Landing page and login
-- https://photosphere.2xxn.dev/studio — Main application (requires Google login)
-- https://photosphere.2xxn.dev/privacy — Privacy Policy
-- https://photosphere.2xxn.dev/terms — Terms of Service
+- https://photosphere.2xxn.dev/ - Landing page and login
+- https://photosphere.2xxn.dev/studio - Main application (requires Google login)
+- https://photosphere.2xxn.dev/privacy - Privacy Policy
+- https://photosphere.2xxn.dev/terms - Terms of Service
 
 ## Source code
 
