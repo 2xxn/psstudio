@@ -3,11 +3,12 @@ import { AUTH_SCOPE, X_CLIENT_ID, X_CLIENT_SECRET, REDIRECT_URI } from "./consts
 
 export const OAUTH2_CLIENT = new OAuth2Client(X_CLIENT_ID, X_CLIENT_SECRET, REDIRECT_URI);
 
-export async function getOAuthToken() {
+export async function getOAuthToken(state?: string) {
     const authorizeUrl = OAUTH2_CLIENT.generateAuthUrl({
         access_type: 'offline',
         scope: AUTH_SCOPE,
         prompt: 'consent',
+        ...(state ? { state } : {}),
     });
 
     return authorizeUrl

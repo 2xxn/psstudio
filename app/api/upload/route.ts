@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAuthFromCookies, parseRegardlessJSON } from '../lib/utils';
 import { StreetViewAPI } from '../lib/streetview';
 import { Photo } from '../lib/types';
-import { fetch } from 'undici';
+
+const MAX_UPLOAD_BYTES = 80 * 1024 * 1024;
 
 export async function POST(request: NextRequest) {
     const auth = await getAuthFromCookies();
@@ -12,7 +13,22 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const contentLength = request.headers.get('content-length');
+    if (contentLength) {
+        const declaredLength = Number(contentLength);
+        if (Number.isFinite(declaredLength) && declaredLength > MAX_UPLOAD_BYTES) {
+            console.warn("Upload request body too large");
+            return NextResponse.json({ error: "Request body too large" }, { status: 413 });
+        }
+    }
+
     const bodyBuffer = Buffer.from(await request.arrayBuffer());
+
+    if (bodyBuffer.byteLength > MAX_UPLOAD_BYTES) {
+        console.warn("Upload request body too large");
+        return NextResponse.json({ error: "Request body too large" }, { status: 413 });
+    }
+
     let { data, bytes }: { data: Partial<Photo>; bytes: any } = parseRegardlessJSON(bodyBuffer);
     bytes = Buffer.from(bytes) as Buffer;
 

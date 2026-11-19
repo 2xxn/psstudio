@@ -29,16 +29,48 @@ export function parseRegardlessJSON(input: Buffer) {
 }
 
 export function encryptTextAES(text: string, key: Buffer): string {
-    const cipher = crypto.createCipheriv('aes-256-cbc', key, Buffer.alloc(16, 0));
-    let encrypted = cipher.update(text, 'utf8');
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return encrypted.toString('hex');
+    const iv = crypto.randomBytes(12);
+    const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+    const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
+    const authTag = cipher.getAuthTag();
+    return `${iv.toString('hex')}:${authTag.toString('hex')}:${encrypted.toString('hex')}`;
 }
 
 export function decryptTextAES(encrypted: string, key: Buffer): string {
+    const parts = encrypted.split(':');
+
+    if (parts.length === 3) {
+        const [ivHex, authTagHex, encryptedHex] = parts;
+
+        if (
+            !/^[0-9a-f]{24}$/i.test(ivHex) ||
+            !/^[0-9a-f]{32}$/i.test(authTagHex) ||
+            encryptedHex.length % 2 !== 0 ||
+            !/^[0-9a-f]*$/i.test(encryptedHex)
+        ) {
+            throw new Error('Invalid encrypted text format');
+        }
+
+        const decipher = crypto.createDecipheriv('aes-256-gcm', key, Buffer.from(ivHex, 'hex'));
+        decipher.setAuthTag(Buffer.from(authTagHex, 'hex'));
+
+        const decrypted = Buffer.concat([
+            decipher.update(Buffer.from(encryptedHex, 'hex')),
+            decipher.final(),
+        ]);
+        return decrypted.toString('utf8');
+    }
+
+    // Legacy AES-256-CBC cookies used a fixed zero IV and a bare hex ciphertext.
+    if (parts.length !== 1 || encrypted.length % 2 !== 0 || !/^[0-9a-f]+$/i.test(encrypted)) {
+        throw new Error('Invalid encrypted text format');
+    }
+
     const decipher = crypto.createDecipheriv('aes-256-cbc', key, Buffer.alloc(16, 0));
-    let decrypted = decipher.update(Buffer.from(encrypted, 'hex'));
-    decrypted = Buffer.concat([decrypted, decipher.final()]);
+    const decrypted = Buffer.concat([
+        decipher.update(Buffer.from(encrypted, 'hex')),
+        decipher.final(),
+    ]);
     return decrypted.toString('utf8');
 }
 
@@ -51,10 +83,15 @@ export async function getAuthFromCookies(): Promise<{ accessToken: string, refre
         return null;
     }
 
-    return {
-        accessToken: decryptTextAES(accessToken, CBC_KEY),
-        refreshToken: decryptTextAES(refreshToken, CBC_KEY)
-    };
+    try {
+        return {
+            accessToken: decryptTextAES(accessToken, CBC_KEY),
+            refreshToken: decryptTextAES(refreshToken, CBC_KEY)
+        };
+    } catch {
+        console.warn("Failed to decrypt auth cookies");
+        return null;
+    }
 }
 
 export function camelToSnakeCase(obj: string): string {

@@ -59,7 +59,7 @@
     # Google OAuth Credentials
     X_CLIENT_ID=your_google_client_id
     X_CLIENT_SECRET=your_google_client_secret
-    REDIRECT_URI=http://localhost:3000/api/auth/callback
+    REDIRECT_URI=http://localhost:3000/api/auth
 
     # Encryption Key (32 bytes for AES-256)
     CBC_KEY=your_32_byte_random_string
