@@ -87,6 +87,8 @@ npm run build
 npm start
 ```
 
+The production build uses Webpack because the FreeBSD host does not support Turbopack's native bindings. Turbopack remains available for local development on supported platforms.
+
 ## Analytics
 
 The hosted instance uses [Umami Cloud](https://umami.is) to collect anonymous page views and product events: logins, photosphere uploads, edits, deletes, and share-link copies. Umami is cookieless and receives no Google account data, photo content, photo locations, or OAuth tokens.
